@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MERCY</title>
-<meta name="description" content="MERCY (Андрей) — студент МГТУ им. Баумана, прикладная информатика. Python, C/C++, C#, Unity.">
+<meta name="description" content="MERCY (Андрей) — студент МГТУ им. Баумана, прикладная информатика. Python, C/C++, C#.">
 <meta name="theme-color" content="#2B3AF5">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%232B3AF5'/><rect x='3' y='3' width='4' height='10' fill='%23FFE14D'/><rect x='9' y='3' width='4' height='4' fill='%23FF5FA8'/><rect x='9' y='9' width='4' height='4' fill='%23fff'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -206,7 +206,9 @@
   .fact span:first-child { font: 400 13px/1.3 var(--f-mono); opacity: .7; }
   .fact span:last-child { font-weight: 700; text-align: right; }
 
-  .stack { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+  .stack { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .stack-label { font: 600 13px/1 var(--f-mono); opacity: .75; margin: 0 0 14px; }
+  .stack + .stack-label { margin-top: 36px; }
   .tile {
     position: relative;
     background: var(--white); color: var(--cobalt-ink);
@@ -275,7 +277,7 @@
   /* ---------- responsive ---------- */
   @media (max-width: 980px) {
     .editor { grid-template-columns: 1fr; }
-    .stack { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .about-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 620px) {
@@ -371,7 +373,7 @@
         <summary><span class="dot" style="background:var(--pink)"></span>Stack (Script)</summary>
         <dl class="props">
           <dt data-i18n="kLangs">Языки</dt><dd>Python, C, C++, C#</dd>
-          <dt data-i18n="kEngine">Движок</dt><dd>Unity</dd>
+          <dt>IDE</dt><dd>PyCharm, Qt Creator, Visual Studio, VS Code</dd>
         </dl>
       </details>
 
@@ -394,7 +396,7 @@
     <div class="about-grid">
       <div class="reveal">
         <!-- ✏️ Напиши здесь о себе: поменяй тексты aboutLead и aboutMore в словаре I18N ниже -->
-        <p data-i18n="aboutLead">Меня зовут Андрей, я студент МГТУ им. Баумана. Пишу на Python, C/C++ и C#, делаю игры на Unity.</p>
+        <p data-i18n="aboutLead">Меня зовут Андрей, я студент МГТУ им. Баумана. Пишу на Python, C/C++ и C#.</p>
         <p data-i18n="aboutMore">Скоро здесь появится больше о том, чем я занимаюсь и что мне интересно.</p>
       </div>
       <div class="facts reveal">
@@ -408,7 +410,10 @@
   <section id="stack">
     <div class="eyebrow">// stack</div>
     <h2 data-i18n="stackTitle">Стек</h2>
-    <div class="stack" id="stackGrid"></div>
+    <div class="stack-label" data-i18n="kLangs">Языки</div>
+    <div class="stack" id="stackLangs"></div>
+    <div class="stack-label">IDE</div>
+    <div class="stack" id="stackIde"></div>
   </section>
 
   <section id="projects">
@@ -463,9 +468,9 @@ const I18N = {
     kName: "Имя", vName: "Андрей",
     kUni: "Университет", vUni: "МГТУ им. Н. Э. Баумана", vUniShort: "МГТУ им. Баумана",
     kMajor: "Направление", vMajor: "Прикладная информатика",
-    kLangs: "Языки", kEngine: "Движок", kFocus: "Интересы", vFocus: "Геймдев, программирование",
+    kLangs: "Языки", kFocus: "Интересы", vFocus: "Геймдев, программирование",
     aboutTitle: "Обо мне",
-    aboutLead: "Меня зовут Андрей, я студент МГТУ им. Баумана. Пишу на Python, C/C++ и C#, делаю игры на Unity.",
+    aboutLead: "Меня зовут Андрей, я студент МГТУ им. Баумана. Пишу на Python, C/C++ и C#.",
     aboutMore: "Скоро здесь появится больше о том, чем я занимаюсь и что мне интересно.",
     stackTitle: "Стек", projectsTitle: "Проекты",
     emptyTitle: "Уровень загружается…",
@@ -477,8 +482,11 @@ const I18N = {
       Python: "Язык программирования",
       C: "Системный язык",
       "C++": "Язык программирования",
-      "C#": "Язык для Unity",
-      Unity: "Игровой движок"
+      "C#": "Язык программирования",
+      PyCharm: "IDE для Python",
+      "Qt Creator": "IDE для C++ и Qt",
+      "Visual Studio": "IDE для C++ и C#",
+      "VS Code": "Редактор кода"
     }
   },
   en: {
@@ -492,9 +500,9 @@ const I18N = {
     kName: "Name", vName: "Andrey",
     kUni: "University", vUni: "Bauman Moscow State Technical University", vUniShort: "BMSTU",
     kMajor: "Major", vMajor: "Applied Informatics",
-    kLangs: "Languages", kEngine: "Engine", kFocus: "Interests", vFocus: "Game dev, programming",
+    kLangs: "Languages", kFocus: "Interests", vFocus: "Game dev, programming",
     aboutTitle: "About me",
-    aboutLead: "My name is Andrey, I study at BMSTU. I write Python, C/C++ and C#, and make games in Unity.",
+    aboutLead: "My name is Andrey, I study at BMSTU. I write Python, C/C++ and C#.",
     aboutMore: "More about what I do and what I'm into is coming soon.",
     stackTitle: "Stack", projectsTitle: "Projects",
     emptyTitle: "Level loading…",
@@ -506,19 +514,29 @@ const I18N = {
       Python: "Programming language",
       C: "Systems language",
       "C++": "Programming language",
-      "C#": "Language for Unity",
-      Unity: "Game engine"
+      "C#": "Programming language",
+      PyCharm: "Python IDE",
+      "Qt Creator": "IDE for C++ and Qt",
+      "Visual Studio": "IDE for C++ and C#",
+      "VS Code": "Code editor"
     }
   }
 };
 
-const STACK = [
-  { name: "Python", icon: "python/python-original.svg" },
-  { name: "C",      icon: "c/c-original.svg" },
-  { name: "C++",    icon: "cplusplus/cplusplus-original.svg" },
-  { name: "C#",     icon: "csharp/csharp-original.svg" },
-  { name: "Unity",  icon: "unity/unity-original.svg" }
-];
+const STACK = {
+  stackLangs: [
+    { name: "Python", icon: "python/python-original.svg" },
+    { name: "C",      icon: "c/c-original.svg" },
+    { name: "C++",    icon: "cplusplus/cplusplus-original.svg" },
+    { name: "C#",     icon: "csharp/csharp-original.svg" }
+  ],
+  stackIde: [
+    { name: "PyCharm",       icon: "pycharm/pycharm-original.svg" },
+    { name: "Qt Creator",    icon: "qt/qt-original.svg" },
+    { name: "Visual Studio", icon: "visualstudio/visualstudio-plain.svg" },
+    { name: "VS Code",       icon: "vscode/vscode-original.svg" }
+  ]
+};
 const DEVICON = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/";
 
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -557,9 +575,12 @@ function renderContacts() {
 
 /* ---------- stack + marquee ---------- */
 function renderStack() {
-  const grid = document.getElementById("stackGrid");
+  for (const id in STACK) renderStackGroup(document.getElementById(id), STACK[id]);
+  observeReveals();
+}
+function renderStackGroup(grid, items) {
   grid.innerHTML = "";
-  STACK.forEach((s, i) => {
+  items.forEach((s, i) => {
     const t = document.createElement("div");
     t.className = "tile reveal";
     t.style.transitionDelay = (i * 70) + "ms";
@@ -568,10 +589,9 @@ function renderStack() {
     t.querySelector("small").textContent = I18N[lang].stack[s.name];
     grid.appendChild(t);
   });
-  observeReveals();
 }
 function renderMarquee() {
-  const words = ["Python", "C", "C++", "C#", "Unity", I18N[lang].vUniShort, I18N[lang].vMajor];
+  const words = ["Python", "C", "C++", "C#", "PyCharm", "Qt", I18N[lang].vUniShort, I18N[lang].vMajor];
   const track = document.getElementById("marquee");
   const html = words.map(w => `<span>${w}</span>`).join("");
   track.innerHTML = html + html; // doubled for a seamless loop
@@ -830,7 +850,7 @@ window.particles = (() => {
     pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top;
     pointer.inside = true;
     pointer.active = !reduceMotion && mode === "scene";
-    // Unity-style readout: origin in the center, Y up, 100px = 1 unit
+    // Editor-style readout: origin in the center, Y up, 100px = 1 unit
     px.textContent = ((pointer.x - W / 2) / 100).toFixed(2);
     py.textContent = ((H / 2 - pointer.y) / 100).toFixed(2);
     start();
